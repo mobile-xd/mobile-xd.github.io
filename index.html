@@ -76,7 +76,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/mobile-xd" title="github"><i class="icon-github"></i></a>
 		        
 					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 		        
@@ -117,7 +117,7 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/mobile-xd" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 			        
@@ -193,6 +193,96 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/08/24/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-浅谈JavaScript的this指向" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/11/浅谈JavaScript的this指向/">浅谈JavaScript的this指向</a>
+    </h1>
+  
+
+        
+        <a href="/2015/08/11/浅谈JavaScript的this指向/" class="archive-article-date">
+  	<time datetime="2015-08-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。</p>
+<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。。</p>
+<p>根据函数的调用方式，这里归纳了几种 this 的指向情况：</p>
+<p><img src="/assets/blogImg/this.png" alt=""></p>
+<p>下面根据这几种情况，分别介绍说明：</p>
+<h3 id="1-普通函数调用"><a href="#1-普通函数调用" class="headerlink" title="1.普通函数调用"></a>1.普通函数调用</h3><p>挂载在全局作用域下的函数，相当于为window添加了一个方法。</p>
+<p>fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">  console.log(this);  </div><div class="line">&#125;</div><div class="line">fn(); //指向window</div><div class="line">console.log(fn === window.fn); //true</div></pre></td></tr></table></figure>
+<p>补充：函数内部的函数中this指向window</p>
+<h3 id="2-构造函数调用"><a href="#2-构造函数调用" class="headerlink" title="2.构造函数调用"></a>2.构造函数调用</h3><p>使用new关键字调用构造函数，构造函数内部的this指向实例对象，关于构造函数的原理，请参见： ？？？？   。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Fn()&#123;</div><div class="line">  console.log(this);  </div><div class="line">&#125;</div><div class="line">var foo = new Fn(); //指向实例对象</div></pre></td></tr></table></figure></p>
+<h3 id="3-对象方法调用"><a href="#3-对象方法调用" class="headerlink" title="3.对象方法调用"></a>3.对象方法调用</h3><p>对象调用方法时，this指向该方法所属对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">  console.log(this);  </div><div class="line">&#125;</div><div class="line">var obj = &#123;</div><div class="line">  name : &apos;obj&apos;,</div><div class="line">  sayFoo : fn,</div><div class="line">  demo : &#123;</div><div class="line">    name : &apos;demo&apos;,</div><div class="line">    sayFoo : fn</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">obj.sayFoo(); //指向obj</div><div class="line">obj.demo.sayFoo(); //指向demo</div></pre></td></tr></table></figure>
+<p>###4.事件绑定方法</p>
+<p>事件处理函数内部的this,指向触发事件的dom对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">  &lt;li&gt;榴莲&lt;/li&gt;</div><div class="line">  &lt;li&gt;臭豆腐&lt;/li&gt;</div><div class="line">  &lt;li&gt;韭菜盒子&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line">--------------------下面为js代码---------------------</div><div class="line">var list = document.querySelectorAll(&apos;li&apos;);</div><div class="line">list.forEach(function(item)&#123;</div><div class="line">  item.addEventListener(&apos;click&apos;,function()&#123;</div><div class="line">    console.log(this); //指向被点击的dom对象</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>###5.定时器函数</p>
+<p>在定时器内部的this，指向window。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript this</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/08/11/浅谈JavaScript的this指向/">展开全文 >></a>
         </p>
       
 
@@ -398,6 +488,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript this</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>

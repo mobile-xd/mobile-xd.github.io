@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/8 | Better late than never</title>
+  <title>浅谈JavaScript的this指向 | Better late than never</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Better late than never">
-<meta property="og:url" content="http://yoursite.com/archives/2017/08/index.html">
+  <meta name="description" content="这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。 总览总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。。 根据函数的调用方式，这里归纳了几种 this 的指向情况：  下面根据这几种情况，分别介绍说明： 1.普通函数调用挂载在全局作用域下的函数，相当于为window添加了一个方法。 fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。 1">
+<meta name="keywords" content="JavaScript this">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈JavaScript的this指向">
+<meta property="og:url" content="http://yoursite.com/2015/08/11/浅谈JavaScript的this指向/index.html">
 <meta property="og:site_name" content="Better late than never">
+<meta property="og:description" content="这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。 总览总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。。 根据函数的调用方式，这里归纳了几种 this 的指向情况：  下面根据这几种情况，分别介绍说明： 1.普通函数调用挂载在全局作用域下的函数，相当于为window添加了一个方法。 fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。 1">
+<meta property="og:image" content="http://yoursite.com/assets/blogImg/this.png">
+<meta property="og:updated_time" content="2017-08-25T03:26:22.572Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Better late than never">
+<meta name="twitter:title" content="浅谈JavaScript的this指向">
+<meta name="twitter:description" content="这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。 总览总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。。 根据函数的调用方式，这里归纳了几种 this 的指向情况：  下面根据这几种情况，分别介绍说明： 1.普通函数调用挂载在全局作用域下的函数，相当于为window添加了一个方法。 fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。 1">
+<meta name="twitter:image" content="http://yoursite.com/assets/blogImg/this.png">
   
     <link rel="alternative" href="/atom.xml" title="Better late than never" type="application/atom+xml">
   
@@ -149,49 +156,200 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-浅谈JavaScript的this指向" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/24/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-24T15:29:14.134Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/24/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      浅谈JavaScript的this指向
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2015/08/11/浅谈JavaScript的this指向/" class="archive-article-date">
+  	<time datetime="2015-08-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。</p>
+<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。。</p>
+<p>根据函数的调用方式，这里归纳了几种 this 的指向情况：</p>
+<p><img src="/assets/blogImg/this.png" alt=""></p>
+<p>下面根据这几种情况，分别介绍说明：</p>
+<h3 id="1-普通函数调用"><a href="#1-普通函数调用" class="headerlink" title="1.普通函数调用"></a>1.普通函数调用</h3><p>挂载在全局作用域下的函数，相当于为window添加了一个方法。</p>
+<p>fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">  console.log(this);  </div><div class="line">&#125;</div><div class="line">fn(); //指向window</div><div class="line">console.log(fn === window.fn); //true</div></pre></td></tr></table></figure>
+<p>补充：函数内部的函数中this指向window</p>
+<h3 id="2-构造函数调用"><a href="#2-构造函数调用" class="headerlink" title="2.构造函数调用"></a>2.构造函数调用</h3><p>使用new关键字调用构造函数，构造函数内部的this指向实例对象，关于构造函数的原理，请参见： ？？？？   。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Fn()&#123;</div><div class="line">  console.log(this);  </div><div class="line">&#125;</div><div class="line">var foo = new Fn(); //指向实例对象</div></pre></td></tr></table></figure></p>
+<h3 id="3-对象方法调用"><a href="#3-对象方法调用" class="headerlink" title="3.对象方法调用"></a>3.对象方法调用</h3><p>对象调用方法时，this指向该方法所属对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">  console.log(this);  </div><div class="line">&#125;</div><div class="line">var obj = &#123;</div><div class="line">  name : &apos;obj&apos;,</div><div class="line">  sayFoo : fn,</div><div class="line">  demo : &#123;</div><div class="line">    name : &apos;demo&apos;,</div><div class="line">    sayFoo : fn</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">obj.sayFoo(); //指向obj</div><div class="line">obj.demo.sayFoo(); //指向demo</div></pre></td></tr></table></figure>
+<p>###4.事件绑定方法</p>
+<p>事件处理函数内部的this,指向触发事件的dom对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">  &lt;li&gt;榴莲&lt;/li&gt;</div><div class="line">  &lt;li&gt;臭豆腐&lt;/li&gt;</div><div class="line">  &lt;li&gt;韭菜盒子&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line">--------------------下面为js代码---------------------</div><div class="line">var list = document.querySelectorAll(&apos;li&apos;);</div><div class="line">list.forEach(function(item)&#123;</div><div class="line">  item.addEventListener(&apos;click&apos;,function()&#123;</div><div class="line">    console.log(this); //指向被点击的dom对象</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>###5.定时器函数</p>
+<p>在定时器内部的this，指向window。</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blogImg/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blogImg/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript this</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/08/11/浅谈JavaScript的this指向/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/08/24/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2015/06/11/安装配置Hexo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">安装配置Hexo</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -214,8 +372,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
