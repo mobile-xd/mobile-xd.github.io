@@ -54,8 +54,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -110,8 +108,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -132,9 +128,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -183,11 +177,9 @@
 <h3 id="2-构造函数调用"><a href="#2-构造函数调用" class="headerlink" title="2.构造函数调用"></a>2.构造函数调用</h3><p>使用new关键字调用构造函数，构造函数内部的this指向实例对象，关于构造函数的原理，请参见： ？？？？   。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Fn()&#123;</div><div class="line">  console.log(this);  </div><div class="line">&#125;</div><div class="line">var foo = new Fn(); //指向实例对象</div></pre></td></tr></table></figure></p>
 <h3 id="3-对象方法调用"><a href="#3-对象方法调用" class="headerlink" title="3.对象方法调用"></a>3.对象方法调用</h3><p>对象调用方法时，this指向该方法所属对象。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">  console.log(this);  </div><div class="line">&#125;</div><div class="line">var obj = &#123;</div><div class="line">  name : &apos;obj&apos;,</div><div class="line">  sayFoo : fn,</div><div class="line">  demo : &#123;</div><div class="line">    name : &apos;demo&apos;,</div><div class="line">    sayFoo : fn</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">obj.sayFoo(); //指向obj</div><div class="line">obj.demo.sayFoo(); //指向demo</div></pre></td></tr></table></figure>
-<p>###4.事件绑定方法</p>
-<p>事件处理函数内部的this,指向触发事件的dom对象。</p>
+<h3 id="4-事件绑定方法"><a href="#4-事件绑定方法" class="headerlink" title="4.事件绑定方法"></a>4.事件绑定方法</h3><p>事件处理函数内部的this,指向触发事件的dom对象。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">  &lt;li&gt;榴莲&lt;/li&gt;</div><div class="line">  &lt;li&gt;臭豆腐&lt;/li&gt;</div><div class="line">  &lt;li&gt;韭菜盒子&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line">--------------------下面为js代码---------------------</div><div class="line">var list = document.querySelectorAll(&apos;li&apos;);</div><div class="line">list.forEach(function(item)&#123;</div><div class="line">  item.addEventListener(&apos;click&apos;,function()&#123;</div><div class="line">    console.log(this); //指向被点击的dom对象</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>###5.定时器函数</p>
-<p>在定时器内部的this，指向window。</p>
+<h3 id="5-定时器函数"><a href="#5-定时器函数" class="headerlink" title="5.定时器函数"></a>5.定时器函数</h3><p>在定时器内部的this，指向window。</p>
 
       
 
@@ -270,7 +262,7 @@
 <h3 id="3-预览博客"><a href="#3-预览博客" class="headerlink" title="3.预览博客"></a>3.预览博客</h3><p>你可以在本地启动服务预览博客</p>
 <p>执行 <code>hexo server</code>命令，默认地址为 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
 <h3 id="4-在github上创建仓库"><a href="#4-在github上创建仓库" class="headerlink" title="4.在github上创建仓库"></a>4.在github上创建仓库</h3><p>用户名必须为  ‘你的用户名’.github.io，这样做是为了可以通过 <a href="https://&#39;你的用户名&#39;.github.io/" target="_blank" rel="external">https://&#39;你的用户名&#39;.github.io/</a> 访问你的博客</p>
-<h3 id="5-配置本地文件"><a href="#5-配置本地文件" class="headerlink" title="5.配置本地文件"></a>5.配置本地文件</h3><p>打开你的blog文件夹下的vim _config.yml文件夹，修改最下面deploy的内容，下面是我配置好的截图</p>
+<h3 id="5-配置本地文件"><a href="#5-配置本地文件" class="headerlink" title="5.配置本地文件"></a>5.配置本地文件</h3><p>打开你的blog文件夹下的vim _config.yml文件，修改最下面deploy的内容，下面是我配置好的截图</p>
 <p><img src="http://i.imgur.com/IgETRS9.png" alt=""></p>
 <p>其中repo这一行，github支持HTTPS和SSH两种协议，根据自己的情况自行选择<br>mobile-xd是我自己的用户名，请修改为你的用户名</p>
 <p>配置好后执行命令 <code>npm install hexo-deployer-git --save</code></p>

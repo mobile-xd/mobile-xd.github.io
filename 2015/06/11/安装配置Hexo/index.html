@@ -16,7 +16,7 @@
 <meta property="og:description" content="本文重点介绍Hexo的安装和配置，node、git的概念和用法不做赘述。：） 安装Hexo1.前置环境安装确保已经安装好Node.js、git、申请了github帐号(建议配置SSH Keys)  2.安装Hexo软件进入cmd命令行，执行命令 npm install hexo-cli --global 可通过 hexo --version 命令查看是否安装成功 2.生成博客在你想要存放博客的位置">
 <meta property="og:image" content="http://i.imgur.com/mUzUrVJ.png">
 <meta property="og:image" content="http://i.imgur.com/IgETRS9.png">
-<meta property="og:updated_time" content="2017-08-24T16:09:59.960Z">
+<meta property="og:updated_time" content="2017-08-25T12:24:04.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安装配置Hexo">
 <meta name="twitter:description" content="本文重点介绍Hexo的安装和配置，node、git的概念和用法不做赘述。：） 安装Hexo1.前置环境安装确保已经安装好Node.js、git、申请了github帐号(建议配置SSH Keys)  2.安装Hexo软件进入cmd命令行，执行命令 npm install hexo-cli --global 可通过 hexo --version 命令查看是否安装成功 2.生成博客在你想要存放博客的位置">
@@ -60,8 +60,6 @@
 			<ul>
 			
 				<li><a href="/">主页</a></li>
-	        
-				<li><a href="/tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
@@ -117,8 +115,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -139,9 +135,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -185,7 +179,7 @@
 <h3 id="3-预览博客"><a href="#3-预览博客" class="headerlink" title="3.预览博客"></a>3.预览博客</h3><p>你可以在本地启动服务预览博客</p>
 <p>执行 <code>hexo server</code>命令，默认地址为 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
 <h3 id="4-在github上创建仓库"><a href="#4-在github上创建仓库" class="headerlink" title="4.在github上创建仓库"></a>4.在github上创建仓库</h3><p>用户名必须为  ‘你的用户名’.github.io，这样做是为了可以通过 <a href="https://&#39;你的用户名&#39;.github.io/" target="_blank" rel="external">https://&#39;你的用户名&#39;.github.io/</a> 访问你的博客</p>
-<h3 id="5-配置本地文件"><a href="#5-配置本地文件" class="headerlink" title="5.配置本地文件"></a>5.配置本地文件</h3><p>打开你的blog文件夹下的vim _config.yml文件夹，修改最下面deploy的内容，下面是我配置好的截图</p>
+<h3 id="5-配置本地文件"><a href="#5-配置本地文件" class="headerlink" title="5.配置本地文件"></a>5.配置本地文件</h3><p>打开你的blog文件夹下的vim _config.yml文件，修改最下面deploy的内容，下面是我配置好的截图</p>
 <p><img src="http://i.imgur.com/IgETRS9.png" alt=""></p>
 <p>其中repo这一行，github支持HTTPS和SSH两种协议，根据自己的情况自行选择<br>mobile-xd是我自己的用户名，请修改为你的用户名</p>
 <p>配置好后执行命令 <code>npm install hexo-deployer-git --save</code></p>
