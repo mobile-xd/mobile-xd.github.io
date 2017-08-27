@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>浅谈JavaScript的this指向 | Better late than never</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。 总览总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。。 根据函数的调用方式，这里归纳了几种 this 的指向情况：  下面根据这几种情况，分别介绍说明： 1.普通函数调用挂载在全局作用域下的函数，相当于为window添加了一个方法。 fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。 1">
+  <meta name="description" content="这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。 概述总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。 根据函数的调用方式，这里归纳了几种 this 的指向情况：  下面根据这几种情况，分别介绍说明： 1.普通函数调用挂载在全局作用域下的函数，相当于为window添加了一个方法。 fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。 12">
 <meta name="keywords" content="JavaScript this">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈JavaScript的this指向">
 <meta property="og:url" content="http://yoursite.com/2015/08/11/浅谈JavaScript的this指向/index.html">
 <meta property="og:site_name" content="Better late than never">
-<meta property="og:description" content="这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。 总览总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。。 根据函数的调用方式，这里归纳了几种 this 的指向情况：  下面根据这几种情况，分别介绍说明： 1.普通函数调用挂载在全局作用域下的函数，相当于为window添加了一个方法。 fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。 1">
+<meta property="og:description" content="这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。 概述总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。 根据函数的调用方式，这里归纳了几种 this 的指向情况：  下面根据这几种情况，分别介绍说明： 1.普通函数调用挂载在全局作用域下的函数，相当于为window添加了一个方法。 fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。 12">
 <meta property="og:image" content="http://yoursite.com/assets/blogImg/this.png">
-<meta property="og:updated_time" content="2017-08-25T12:23:45.563Z">
+<meta property="og:updated_time" content="2017-08-25T13:25:31.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈JavaScript的this指向">
-<meta name="twitter:description" content="这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。 总览总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。。 根据函数的调用方式，这里归纳了几种 this 的指向情况：  下面根据这几种情况，分别介绍说明： 1.普通函数调用挂载在全局作用域下的函数，相当于为window添加了一个方法。 fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。 1">
+<meta name="twitter:description" content="这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。 概述总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。 根据函数的调用方式，这里归纳了几种 this 的指向情况：  下面根据这几种情况，分别介绍说明： 1.普通函数调用挂载在全局作用域下的函数，相当于为window添加了一个方法。 fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。 12">
 <meta name="twitter:image" content="http://yoursite.com/assets/blogImg/this.png">
   
     <link rel="alternative" href="/atom.xml" title="Better late than never" type="application/atom+xml">
@@ -171,7 +171,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。</p>
-<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。</p>
 <p>根据函数的调用方式，这里归纳了几种 this 的指向情况：</p>
 <p><img src="/assets/blogImg/this.png" alt=""></p>
 <p>下面根据这几种情况，分别介绍说明：</p>
@@ -298,6 +298,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2015/08/16/JS的构造函数/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JS的构造函数
+        
+      </div>
+    </a>
   
   
     <a href="/2015/06/11/安装配置Hexo/" id="article-nav-older" class="article-nav-link-wrap">
@@ -426,6 +435,30 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript this</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 原型 原型链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 构造函数 new</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 构造函数 new 面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 原型 原型链 面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 面向对象 构造函数 new</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 面向对象 原型 原型链</a>
               </li>
             
             <div class="clearfix"></div>

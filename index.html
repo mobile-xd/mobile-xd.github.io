@@ -145,6 +145,192 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JS的原型链" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/20/JS的原型链/">JS的原型链</a>
+    </h1>
+  
+
+        
+        <a href="/2015/08/20/JS的原型链/" class="archive-article-date">
+  	<time datetime="2015-08-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简单写一下自己对原型链的理解，如果发现错误欢迎指正。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>原型链是JS学习的重点，初学者会被各种属性和指向绕晕，其实找对切入点原型链是很容易理解的。</p>
+<p>要看明白这篇文章，你需要知道什么是构造函数，构造函数的作用和原理是什么。<br>请参考博文“JS的构造函数”。</p>
+<h3 id="1-原型"><a href="#1-原型" class="headerlink" title="1.原型"></a>1.原型</h3><p>Javascript 规定了：  </p>
+<p>1.所有构造函数都拥有 <code>prototype</code> 属性，指向一个对象，这个对象被称为原型对象。 </p>
+<p>2.所有被构造函数创建的实例对象都拥有<code>__proto__</code>属性(只有在高版本浏览器才能查看)指向其构造函数的原型对象。</p>
+<p>3.实例对象可以通过<code>__proto__</code>属性，共享访问原型对象上的属性和方法。</p>
+<p>下面以一段简单的代码举例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Student(name,age)&#123;</div><div class="line">  this.name = name;</div><div class="line">  this.age = age;  	</div><div class="line">&#125;;</div><div class="line">Student.prototype.sayHi = function()&#123;</div><div class="line">  console.log(this.name);</div><div class="line">&#125;;</div><div class="line">var xiaoMing = new Student(&apos;小明&apos;,18);  </div><div class="line">var xiaoHong = new Student(&apos;小红&apos;,19);</div><div class="line">xiaoMing.sayHi();	 //小明</div></pre></td></tr></table></figure>
+<p>在这段代码中：</p>
+<ul>
+<li><code>xiaoMing</code>为构造函数<code>Student</code>的<strong>实例对象</strong>。</li>
+<li><code>Student</code>拥有原型对象<code>Student.prototype</code>。</li>
+<li><code>xiaoMing</code>的<code>__proto__</code>属性<strong>指向了<code>Student</code>的原型对象即<code>Student.prototype</code></strong>。</li>
+<li>因此<code>xiaoMing</code>可以访问<code>Student.prototype</code>上的属性和方法。<br>它们间的关系见下图：</li>
+</ul>
+<p><img src="/assets/blogImg/prototype1.png" alt=""></p>
+<p>我们可以进行简单的验证。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(xiaoMing.__proto__ === Student.prototype); //true</div><div class="line">console.log(xiaoMing.sayHi === xiaoHong.sayHi); //true</div></pre></td></tr></table></figure></p>
+<p>这样所有的实例对象都共享同一个sayHi方法了，避免了内存的浪费。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript 面向对象 原型 原型链</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/08/20/JS的原型链/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-JS的构造函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/16/JS的构造函数/">JS的构造函数</a>
+    </h1>
+  
+
+        
+        <a href="/2015/08/16/JS的构造函数/" class="archive-article-date">
+  	<time datetime="2015-08-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简单写一下自己对构造函数的理解，如果发现错误欢迎指正。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>掌握构造函数，可以更好的理解面向对象及原型链。</p>
+<h3 id="1-什么是构造函数"><a href="#1-什么是构造函数" class="headerlink" title="1.什么是构造函数"></a>1.什么是构造函数</h3><p>形如下面的代码就是构造函数，它可以更加优雅的创建对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function Student(name,age)&#123;</div><div class="line">  this.name = name;</div><div class="line">  this.age = age;  </div><div class="line">  this.sayHi =	function()&#123;</div><div class="line">    console.log(this.name);</div><div class="line">  &#125;;</div><div class="line">&#125;;</div><div class="line">var xiaoMing = new Student(&apos;小明&apos;,18);  </div><div class="line">var xiaoHong = new Student(&apos;小红&apos;,19);</div></pre></td></tr></table></figure>
+<p>构造函数也是普通的函数，只不过可以通过 new 关键字来创建实例对象。</p>
+<p>建议构造函数的第一个字母大写，否则会让读你代码的人体验很差。</p>
+<h3 id="2-构造函数的执行"><a href="#2-构造函数的执行" class="headerlink" title="2.构造函数的执行"></a>2.构造函数的执行</h3><p>通过构造函数创建实例，必须使用 new 关键字。以这种方式调用构造函数会经历以下 4 个步骤：</p>
+<ul>
+<li>创建一个新对象</li>
+<li>将构造函数的作用域指向新对象（因此 this 就指向了这个新对象）</li>
+<li>执行构造函数中的代码</li>
+<li>返回新对象<br>下面是具体的伪代码：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function Student(name,age)&#123;</div><div class="line">  // 创建一个新对象</div><div class="line">  // var instance = &#123;&#125;;</div><div class="line">  </div><div class="line">  // 将构造函数的作用域指向新对象</div><div class="line">  // this = instance;</div><div class="line">  </div><div class="line">  // 执行构造函数中的代码</div><div class="line">  this.name = name;</div><div class="line">  this.age = age;  </div><div class="line">  this.sayHi = function()&#123;</div><div class="line">    console.log(this.name);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  // 返回新对象</div><div class="line">  //return this;</div><div class="line">&#125;;</div><div class="line">var xiaoMing = new Student(&apos;小明&apos;,18);  </div><div class="line">var xiaoHong = new Student(&apos;小红&apos;,19);</div></pre></td></tr></table></figure>
+<p>解构造函数在执行时，底层为我们隐式的执行了以上操作。</p>
+<h3 id="3-实例对象和构造函数的关系"><a href="#3-实例对象和构造函数的关系" class="headerlink" title="3.实例对象和构造函数的关系"></a>3.实例对象和构造函数的关系</h3><p>由构造函数创建的实例对象都拥有<code>constructor</code> 属性，该属性指向创建该实例对象的构造函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(xiaoMing.constructor === Student); // true</div></pre></td></tr></table></figure>
+<p>对象的 <code>constructor</code> 属性最初就是用来标识对象类型的， 但是，如果要检测对象的类型，还是建议使用 instanceof 操作符(原因在后续博文“JS的原型链”中会解释)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(xiaoMing instanceof Student) //  true</div></pre></td></tr></table></figure>
+<h3 id="4-使用构造函数的问题"><a href="#4-使用构造函数的问题" class="headerlink" title="4.使用构造函数的问题"></a>4.使用构造函数的问题</h3><p>像第一节那样使用构造函数，会产生一个问题，对于每一个实例对象，sayHi方法的功能都一样。但是每生成一个实例对象，都会重复创建方法，造成内存的浪费。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(xiaoMing.sayHi === xiaoHong.sayHi); //false</div></pre></td></tr></table></figure></p>
+<p>还好我们可以用原型来解决这个问题，请参考博文“JS的原型链”。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript 面向对象 构造函数 new</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/08/16/JS的构造函数/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-浅谈JavaScript的this指向" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -166,7 +352,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>这里简单的总结一下常见情况的this指向问题，如果发现错误欢迎指正。</p>
-<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p>总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。</p>
 <p>根据函数的调用方式，这里归纳了几种 this 的指向情况：</p>
 <p><img src="/assets/blogImg/this.png" alt=""></p>
 <p>下面根据这几种情况，分别介绍说明：</p>
@@ -412,6 +598,30 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript this</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 原型 原型链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 构造函数 new</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 构造函数 new 面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 原型 原型链 面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">JavaScript 面向对象 构造函数 new</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript 面向对象 原型 原型链</a>
               </li>
             
             <div class="clearfix"></div>

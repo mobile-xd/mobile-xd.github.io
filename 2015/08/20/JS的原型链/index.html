@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2015/8 | Better late than never</title>
+  <title>JS的原型链 | Better late than never</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Better late than never">
-<meta property="og:url" content="http://yoursite.com/archives/2015/08/index.html">
+  <meta name="description" content="简单写一下自己对原型链的理解，如果发现错误欢迎指正。 概述原型链是JS学习的重点，初学者会被各种属性和指向绕晕，其实找对切入点原型链是很容易理解的。 要看明白这篇文章，你需要知道什么是构造函数，构造函数的作用和原理是什么。请参考博文“JS的构造函数”。 1.原型Javascript 规定了：   1.所有构造函数都拥有 prototype 属性，指向一个对象，这个对象被称为原型对象。  2.所有被">
+<meta name="keywords" content="JavaScript 面向对象 原型 原型链">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS的原型链">
+<meta property="og:url" content="http://yoursite.com/2015/08/20/JS的原型链/index.html">
 <meta property="og:site_name" content="Better late than never">
+<meta property="og:description" content="简单写一下自己对原型链的理解，如果发现错误欢迎指正。 概述原型链是JS学习的重点，初学者会被各种属性和指向绕晕，其实找对切入点原型链是很容易理解的。 要看明白这篇文章，你需要知道什么是构造函数，构造函数的作用和原理是什么。请参考博文“JS的构造函数”。 1.原型Javascript 规定了：   1.所有构造函数都拥有 prototype 属性，指向一个对象，这个对象被称为原型对象。  2.所有被">
+<meta property="og:image" content="http://yoursite.com/assets/blogImg/prototype1.png">
+<meta property="og:updated_time" content="2017-08-27T03:53:41.591Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Better late than never">
+<meta name="twitter:title" content="JS的原型链">
+<meta name="twitter:description" content="简单写一下自己对原型链的理解，如果发现错误欢迎指正。 概述原型链是JS学习的重点，初学者会被各种属性和指向绕晕，其实找对切入点原型链是很容易理解的。 要看明白这篇文章，你需要知道什么是构造函数，构造函数的作用和原理是什么。请参考博文“JS的构造函数”。 1.原型Javascript 规定了：   1.所有构造函数都拥有 prototype 属性，指向一个对象，这个对象被称为原型对象。  2.所有被">
+<meta name="twitter:image" content="http://yoursite.com/assets/blogImg/prototype1.png">
   
     <link rel="alternative" href="/atom.xml" title="Better late than never" type="application/atom+xml">
   
@@ -143,36 +150,84 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JS的原型链" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/20/JS的原型链/" class="archive-article-date">
-  	<time datetime="2015-08-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/20/JS的原型链/">JS的原型链</a>
+    <h1 class="article-title" itemprop="name">
+      JS的原型链
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2015/08/20/JS的原型链/" class="archive-article-date">
+  	<time datetime="2015-08-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简单写一下自己对原型链的理解，如果发现错误欢迎指正。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>原型链是JS学习的重点，初学者会被各种属性和指向绕晕，其实找对切入点原型链是很容易理解的。</p>
+<p>要看明白这篇文章，你需要知道什么是构造函数，构造函数的作用和原理是什么。<br>请参考博文“JS的构造函数”。</p>
+<h3 id="1-原型"><a href="#1-原型" class="headerlink" title="1.原型"></a>1.原型</h3><p>Javascript 规定了：  </p>
+<p>1.所有构造函数都拥有 <code>prototype</code> 属性，指向一个对象，这个对象被称为原型对象。 </p>
+<p>2.所有被构造函数创建的实例对象都拥有<code>__proto__</code>属性(只有在高版本浏览器才能查看)指向其构造函数的原型对象。</p>
+<p>3.实例对象可以通过<code>__proto__</code>属性，共享访问原型对象上的属性和方法。</p>
+<p>下面以一段简单的代码举例。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Student(name,age)&#123;</div><div class="line">  this.name = name;</div><div class="line">  this.age = age;  	</div><div class="line">&#125;;</div><div class="line">Student.prototype.sayHi = function()&#123;</div><div class="line">  console.log(this.name);</div><div class="line">&#125;;</div><div class="line">var xiaoMing = new Student(&apos;小明&apos;,18);  </div><div class="line">var xiaoHong = new Student(&apos;小红&apos;,19);</div><div class="line">xiaoMing.sayHi();	 //小明</div></pre></td></tr></table></figure>
+<p>在这段代码中：</p>
+<ul>
+<li><code>xiaoMing</code>为构造函数<code>Student</code>的<strong>实例对象</strong>。</li>
+<li><code>Student</code>拥有原型对象<code>Student.prototype</code>。</li>
+<li><code>xiaoMing</code>的<code>__proto__</code>属性<strong>指向了<code>Student</code>的原型对象即<code>Student.prototype</code></strong>。</li>
+<li>因此<code>xiaoMing</code>可以访问<code>Student.prototype</code>上的属性和方法。<br>它们间的关系见下图：</li>
+</ul>
+<p><img src="/assets/blogImg/prototype1.png" alt=""></p>
+<p>我们可以进行简单的验证。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(xiaoMing.__proto__ === Student.prototype); //true</div><div class="line">console.log(xiaoMing.sayHi === xiaoHong.sayHi); //true</div></pre></td></tr></table></figure></p>
+<p>这样所有的实例对象都共享同一个sayHi方法了，避免了内存的浪费。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blogImg/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blogImg/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -184,95 +239,104 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/08/20/JS的原型链/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/16/JS的构造函数/" class="archive-article-date">
-  	<time datetime="2015-08-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-16</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2015/08/16/JS的构造函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS的构造函数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/16/JS的构造函数/">JS的构造函数</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript 面向对象 构造函数 new</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/11/浅谈JavaScript的this指向/" class="archive-article-date">
-  	<time datetime="2015-08-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/11/浅谈JavaScript的this指向/">浅谈JavaScript的this指向</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript this</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -295,8 +359,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
