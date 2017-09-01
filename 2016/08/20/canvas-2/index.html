@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JS的构造函数 | Better late than never</title>
+  <title>Canvas学习笔记-2 | Better late than never</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简单写一下自己对构造函数的理解，如果发现错误欢迎指正。 概述掌握构造函数，可以更好的理解面向对象及原型链。 1.什么是构造函数形如下面的代码就是构造函数，它可以更加优雅的创建对象。 123456789function Student(name,age)&amp;#123;  this.name = name;  this.age = age;    this.sayHi =	function()&amp;#123">
-<meta name="keywords" content="JavaScript 面向对象 构造函数 new">
+  <meta name="description" content="本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将结合具体事例说明。 矩形1.绘制矩形canvas提供了三个绘制矩形的API，分别为rect()、strokeRect()、fillRect()。它们都接收四个参数，分别为：起始点横坐标，起始点纵坐标，x轴方向的宽，y轴方向的宽度。 12345ctx.rect(100,100,100,200);ctx.stroke();//ctx.f">
+<meta name="keywords" content="Canvas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS的构造函数">
-<meta property="og:url" content="http://yoursite.com/2015/08/16/JS的构造函数/index.html">
+<meta property="og:title" content="Canvas学习笔记-2">
+<meta property="og:url" content="http://yoursite.com/2016/08/20/canvas-2/index.html">
 <meta property="og:site_name" content="Better late than never">
-<meta property="og:description" content="简单写一下自己对构造函数的理解，如果发现错误欢迎指正。 概述掌握构造函数，可以更好的理解面向对象及原型链。 1.什么是构造函数形如下面的代码就是构造函数，它可以更加优雅的创建对象。 123456789function Student(name,age)&amp;#123;  this.name = name;  this.age = age;    this.sayHi =	function()&amp;#123">
-<meta property="og:updated_time" content="2017-09-01T12:21:17.691Z">
+<meta property="og:description" content="本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将结合具体事例说明。 矩形1.绘制矩形canvas提供了三个绘制矩形的API，分别为rect()、strokeRect()、fillRect()。它们都接收四个参数，分别为：起始点横坐标，起始点纵坐标，x轴方向的宽，y轴方向的宽度。 12345ctx.rect(100,100,100,200);ctx.stroke();//ctx.f">
+<meta property="og:image" content="http://i.imgur.com/qtIp2ZI.png">
+<meta property="og:image" content="http://i.imgur.com/29LUe4c.png">
+<meta property="og:updated_time" content="2017-09-01T13:22:17.611Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS的构造函数">
-<meta name="twitter:description" content="简单写一下自己对构造函数的理解，如果发现错误欢迎指正。 概述掌握构造函数，可以更好的理解面向对象及原型链。 1.什么是构造函数形如下面的代码就是构造函数，它可以更加优雅的创建对象。 123456789function Student(name,age)&amp;#123;  this.name = name;  this.age = age;    this.sayHi =	function()&amp;#123">
+<meta name="twitter:title" content="Canvas学习笔记-2">
+<meta name="twitter:description" content="本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将结合具体事例说明。 矩形1.绘制矩形canvas提供了三个绘制矩形的API，分别为rect()、strokeRect()、fillRect()。它们都接收四个参数，分别为：起始点横坐标，起始点纵坐标，x轴方向的宽，y轴方向的宽度。 12345ctx.rect(100,100,100,200);ctx.stroke();//ctx.f">
+<meta name="twitter:image" content="http://i.imgur.com/qtIp2ZI.png">
   
     <link rel="alternative" href="/atom.xml" title="Better late than never" type="application/atom+xml">
   
@@ -148,48 +151,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JS的构造函数" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-canvas-2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JS的构造函数
+      Canvas学习笔记-2
     </h1>
   
 
         
-        <a href="/2015/08/16/JS的构造函数/" class="archive-article-date">
-  	<time datetime="2015-08-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-16</time>
+        <a href="/2016/08/20/canvas-2/" class="archive-article-date">
+  	<time datetime="2016-08-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>简单写一下自己对构造函数的理解，如果发现错误欢迎指正。</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>掌握构造函数，可以更好的理解面向对象及原型链。</p>
-<h3 id="1-什么是构造函数"><a href="#1-什么是构造函数" class="headerlink" title="1.什么是构造函数"></a>1.什么是构造函数</h3><p>形如下面的代码就是构造函数，它可以更加优雅的创建对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.age = age;  </div><div class="line">  <span class="keyword">this</span>.sayHi =	<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">  &#125;;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> xiaoMing = <span class="keyword">new</span> Student(<span class="string">'小明'</span>,<span class="number">18</span>);  </div><div class="line"><span class="keyword">var</span> xiaoHong = <span class="keyword">new</span> Student(<span class="string">'小红'</span>,<span class="number">19</span>);</div></pre></td></tr></table></figure>
-<p>构造函数也是普通的函数，只不过可以通过 new 关键字来创建实例对象。</p>
-<p>建议构造函数的第一个字母大写，否则会让读你代码的人体验很差。</p>
-<a id="more"></a>
-<h3 id="2-构造函数的执行"><a href="#2-构造函数的执行" class="headerlink" title="2.构造函数的执行"></a>2.构造函数的执行</h3><p>通过构造函数创建实例，必须使用 new 关键字。以这种方式调用构造函数会经历以下 4 个步骤：</p>
+        <p>本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将结合具体事例说明。</p>
+<h2 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h2><h3 id="1-绘制矩形"><a href="#1-绘制矩形" class="headerlink" title="1.绘制矩形"></a>1.绘制矩形</h3><p>canvas提供了三个绘制矩形的API，分别为<code>rect()</code>、<code>strokeRect()</code>、<code>fillRect()</code>。它们都接收四个参数，分别为：起始点横坐标，起始点纵坐标，x轴方向的宽，y轴方向的宽度。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ctx.rect(<span class="number">100</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">200</span>);</div><div class="line">ctx.stroke();</div><div class="line"><span class="comment">//ctx.fill();</span></div><div class="line">ctx.strokeRect(<span class="number">250</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">200</span>);</div><div class="line">ctx.fillRect(<span class="number">400</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">200</span>);</div></pre></td></tr></table></figure>
+<p><img src="http://i.imgur.com/qtIp2ZI.png" alt=""></p>
 <ul>
-<li>创建一个新对象</li>
-<li>将构造函数的作用域指向新对象（因此 this 就指向了这个新对象）</li>
-<li>执行构造函数中的代码</li>
-<li>返回新对象<br>下面是具体的伪代码：</li>
+<li><code>ctx.rect()</code> 只做路径绘制，需要自行描边或填充。</li>
+<li><code>ctx.strokeRect()</code> 绘制了路径并用描边的方式绘制的矩形</li>
+<li><code>ctx.fillRect()</code> 绘制了路径并用填充的方式绘制的矩形</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">  <span class="comment">// 创建一个新对象</span></div><div class="line">  <span class="comment">// var instance = &#123;&#125;;</span></div><div class="line">  </div><div class="line">  <span class="comment">// 将构造函数的作用域指向新对象</span></div><div class="line">  <span class="comment">// this = instance;</span></div><div class="line">  </div><div class="line">  <span class="comment">// 执行构造函数中的代码</span></div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.age = age;  </div><div class="line">  <span class="keyword">this</span>.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="comment">// 返回新对象</span></div><div class="line">  <span class="comment">//return this;</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> xiaoMing = <span class="keyword">new</span> Student(<span class="string">'小明'</span>,<span class="number">18</span>);  </div><div class="line"><span class="keyword">var</span> xiaoHong = <span class="keyword">new</span> Student(<span class="string">'小红'</span>,<span class="number">19</span>);</div></pre></td></tr></table></figure>
-<p>解构造函数在执行时，底层为我们隐式的执行了以上操作。</p>
-<h3 id="3-实例对象和构造函数的关系"><a href="#3-实例对象和构造函数的关系" class="headerlink" title="3.实例对象和构造函数的关系"></a>3.实例对象和构造函数的关系</h3><p>由构造函数创建的实例对象都拥有<code>constructor</code> 属性，该属性指向创建该实例对象的构造函数：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(xiaoMing.constructor === Student); <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<p>对象的 <code>constructor</code> 属性最初就是用来标识对象类型的， 但是，如果要检测对象的类型，还是建议使用 instanceof 操作符(原因在后续博文“JS的原型链”中会解释)：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(xiaoMing <span class="keyword">instanceof</span> Student) <span class="comment">//  true</span></div></pre></td></tr></table></figure>
-<h3 id="4-使用构造函数的问题"><a href="#4-使用构造函数的问题" class="headerlink" title="4.使用构造函数的问题"></a>4.使用构造函数的问题</h3><p>像第一节那样使用构造函数，会产生一个问题，对于每一个实例对象，sayHi方法的功能都一样。但是每生成一个实例对象，都会重复创建方法，造成内存的浪费。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(xiaoMing.sayHi === xiaoHong.sayHi); <span class="comment">//false</span></div></pre></td></tr></table></figure></p>
-<p>还好我们可以用原型来解决这个问题，请参考博文“JS的原型链”。</p>
+<a id="more"></a>
+<h3 id="2-擦除（按矩形）"><a href="#2-擦除（按矩形）" class="headerlink" title="2.擦除（按矩形）"></a>2.擦除（按矩形）</h3><p>canvas可以按矩形擦除内容，四个参数同上。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.rect(<span class="number">100</span>,<span class="number">100</span>,<span class="number">200</span>,<span class="number">200</span>);</div><div class="line">ctx.fill();</div><div class="line">ctx.clearRect(<span class="number">100</span>,<span class="number">100</span>,<span class="number">50</span>,<span class="number">100</span>);</div></pre></td></tr></table></figure></p>
+<p><img src="http://i.imgur.com/29LUe4c.png" alt=""><br>如图擦除了一块50*100的矩形区域。</p>
+<h2 id="圆弧"><a href="#圆弧" class="headerlink" title="圆弧"></a>圆弧</h2><p>除了矩形，canvas还提供了绘制圆弧的API。</p>
+<h3 id="弧度"><a href="#弧度" class="headerlink" title="弧度"></a>弧度</h3><p>因为canvas使用弧度绘制圆弧，下面进行简单的推导。<br>周长：2πr<br>弧度：弧长等于半径的弧，其所对的圆心角为1弧度<br>因此360度转化为弧度为周长除以半径即2πr/r = 2π。</p>
 
       
 
@@ -234,7 +229,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JavaScript 面向对象 构造函数 new</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Canvas</a>
         		</li>
       		
 		</ul>
@@ -290,7 +285,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/08/16/JS的构造函数/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/08/20/canvas-2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -304,18 +299,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2015/08/20/JS的原型链/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JS的原型链
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/08/11/浅谈JavaScript的this指向/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">浅谈JavaScript的this指向</div>
+    <a href="/2016/08/16/canvas-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Canvas学习笔记-1</div>
       <i class="icon-circle-right"></i>
     </a>
   

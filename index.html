@@ -145,68 +145,38 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-canvas" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-canvas-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/16/canvas/">Canvas学习笔记</a>
+      <a class="article-title" href="/2016/08/20/canvas-2/">Canvas学习笔记-2</a>
     </h1>
   
 
         
-        <a href="/2016/08/16/canvas/" class="archive-article-date">
-  	<time datetime="2016-08-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-16</time>
+        <a href="/2016/08/20/canvas-2/" class="archive-article-date">
+  	<time datetime="2016-08-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-20</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将由具体事例引出。</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Canvas是HTML5新增的元素，就像一块幕布，你可以在它上面绘制图表、动画等（利用JavaScript）。它的默认大小为300*150。</p>
-<h3 id="创建并获取canvas"><a href="#创建并获取canvas" class="headerlink" title="创建并获取canvas"></a>创建并获取canvas</h3><p>定义一个canvas元素，为了方便查看，你可以为其设置边框等样式：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>在JS中获取canvas：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*1.获取canvas元素*/</span></div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">'canvas'</span>);</div><div class="line"><span class="comment">/*2.获取绘制环境（绘制工具）*/</span></div><div class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</div></pre></td></tr></table></figure></p>
-<p>注：下面的代码都是基于此环境。</p>
-<h2 id="线条"><a href="#线条" class="headerlink" title="线条"></a>线条</h2><h3 id="1-绘制线条"><a href="#1-绘制线条" class="headerlink" title="1.绘制线条"></a>1.绘制线条</h3><p>利用canvas绘制线条：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*3.设置起始绘图的位置*/</span></div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>); <span class="comment">//两个参数分别为横坐标、纵坐标</span></div><div class="line"><span class="comment">/*4.绘制路径 */</span></div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">100</span>); <span class="comment">//两个参数分别为横坐标、纵坐标</span></div><div class="line"><span class="comment">/*5.描边*/</span></div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure></p>
-<p>结果如图：<br><img src="http://i.imgur.com/rwBHw1r.png" alt=""></p>
-<p>canvas的坐标轴如图，箭头方向为正方向，因此上述代码画了一条由坐标(100,100)到坐标(200,100)的线。</p>
-<h3 id="2-线条的基本样式"><a href="#2-线条的基本样式" class="headerlink" title="2.线条的基本样式"></a>2.线条的基本样式</h3><p>下面，我们绘制两条平行线，并未它们添加一些样式。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*第一条线*/</span></div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>);</div><div class="line"><span class="comment">/*设置宽度*/</span></div><div class="line">ctx.lineWidth = <span class="number">10</span>;</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">100</span>);</div><div class="line"><span class="comment">/*设置描边的颜色*/</span></div><div class="line">ctx.strokeStyle = <span class="string">'red'</span>;</div><div class="line">ctx.stroke();</div><div class="line"><span class="comment">/*第二条线*/</span></div><div class="line"><span class="comment">/*开启新路径*/</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">200</span>);</div><div class="line">ctx.strokeStyle = <span class="string">'green'</span>;</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure></p>
-<p>结果如图：<br><img src="http://i.imgur.com/YIP81fy.png" alt=""></p>
-<p>用到了以下几个属性：   </p>
+        <p>本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将结合具体事例说明。</p>
+<h2 id="矩形"><a href="#矩形" class="headerlink" title="矩形"></a>矩形</h2><h3 id="1-绘制矩形"><a href="#1-绘制矩形" class="headerlink" title="1.绘制矩形"></a>1.绘制矩形</h3><p>canvas提供了三个绘制矩形的API，分别为<code>rect()</code>、<code>strokeRect()</code>、<code>fillRect()</code>。它们都接收四个参数，分别为：起始点横坐标，起始点纵坐标，x轴方向的宽，y轴方向的宽度。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ctx.rect(<span class="number">100</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">200</span>);</div><div class="line">ctx.stroke();</div><div class="line"><span class="comment">//ctx.fill();</span></div><div class="line">ctx.strokeRect(<span class="number">250</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">200</span>);</div><div class="line">ctx.fillRect(<span class="number">400</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">200</span>);</div></pre></td></tr></table></figure>
+<p><img src="http://i.imgur.com/qtIp2ZI.png" alt=""></p>
 <ul>
-<li><code>ctx.lineWidth</code> 设置宽度   </li>
-<li><code>ctx.strokeStyle</code> 设置描边样式（可以设置颜色、渐变方案、图片） </li>
-<li><code>ctx.stroke()</code> 描边   </li>
-<li><code>ctx.beginPath()</code> 开始新路径，你可以像上述代码那样为它设置新的样式。这样两种样式互不影响，否则下面的样式会层叠掉上面的。</li>
+<li><code>ctx.rect()</code> 只做路径绘制，需要自行描边或填充。</li>
+<li><code>ctx.strokeRect()</code> 绘制了路径并用描边的方式绘制的矩形</li>
+<li><code>ctx.fillRect()</code> 绘制了路径并用填充的方式绘制的矩形</li>
 </ul>
-<h3 id="3-线条两端和拐点的样式"><a href="#3-线条两端和拐点的样式" class="headerlink" title="3.线条两端和拐点的样式"></a>3.线条两端和拐点的样式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line"><span class="comment">/*线条两端的样式-1*/</span></div><div class="line">ctx.lineWidth = <span class="number">10</span>;</div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">100</span>);</div><div class="line">ctx.strokeStyle = <span class="string">'red'</span>;</div><div class="line">ctx.lineCap = <span class="string">'butt'</span>;</div><div class="line">ctx.stroke();</div><div class="line"><span class="comment">/*线条两端的样式-2*/</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">200</span>);</div><div class="line">ctx.strokeStyle = <span class="string">'green'</span>;</div><div class="line">ctx.lineCap = <span class="string">'round'</span>;</div><div class="line">ctx.stroke();</div><div class="line"><span class="comment">/*线条两端的样式-3*/</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">300</span>);</div><div class="line">ctx.strokeStyle = <span class="string">'pink'</span>;</div><div class="line">ctx.lineCap = <span class="string">'square'</span>;</div><div class="line">ctx.stroke();</div><div class="line"><span class="comment">/*线条拐点的样式-1*/</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">300</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">350</span>,<span class="number">150</span>);</div><div class="line">ctx.lineTo(<span class="number">400</span>,<span class="number">100</span>);</div><div class="line">ctx.strokeStyle = <span class="string">'red'</span>;</div><div class="line">ctx.lineJoin = <span class="string">'miter'</span>;</div><div class="line">ctx.stroke();</div><div class="line"><span class="comment">/*线条拐点的样式-2*/</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">300</span>,<span class="number">200</span>);</div><div class="line">ctx.lineTo(<span class="number">350</span>,<span class="number">250</span>);</div><div class="line">ctx.lineTo(<span class="number">400</span>,<span class="number">200</span>);</div><div class="line">ctx.strokeStyle = <span class="string">'green'</span>;</div><div class="line">ctx.lineJoin = <span class="string">'round'</span>;</div><div class="line">ctx.stroke();</div><div class="line"><span class="comment">/*线条拐点的样式-3*/</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">300</span>,<span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">350</span>,<span class="number">350</span>);</div><div class="line">ctx.lineTo(<span class="number">400</span>,<span class="number">300</span>);</div><div class="line">ctx.strokeStyle = <span class="string">'pink'</span>;</div><div class="line">ctx.lineJoin = <span class="string">'bevel'</span>;</div><div class="line">ctx.stroke();</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<p>结果如图，没什么好说，根据需要选择样式吧：<br><img src="http://i.imgur.com/aUiWRQO.png" alt=""></p>
-<h3 id="4-绘制虚线"><a href="#4-绘制虚线" class="headerlink" title="4.绘制虚线"></a>4.绘制虚线</h3><p>下面绘制两条虚线：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*第一条*/</span></div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">500</span>,<span class="number">100</span>);</div><div class="line">ctx.setLineDash([<span class="number">10</span>,<span class="number">20</span>]);</div><div class="line"><span class="built_in">console</span>.log(ctx.getLineDash());  <span class="comment">//[10, 20]</span></div><div class="line">ctx.stroke();</div><div class="line"><span class="comment">/*第二条*/</span></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">500</span>,<span class="number">100</span>);</div><div class="line">ctx.setLineDash([<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>]);</div><div class="line"><span class="built_in">console</span>.log(ctx.getLineDash()); <span class="comment">//[10, 20, 30, 10, 20, 30]</span></div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
-<p>结果如下图：<br><img src="http://i.imgur.com/46okgGl.png" alt=""></p>
-<p>我们看出：  </p>
-<ul>
-<li><code>ctx.setLineDash()</code> 的参数为数组，数组中的值依次指实线的长度、空白的长度。   </li>
-<li><code>ctx.getLineDash()</code> 获取的是一个完整的循环的数组。</li>
-</ul>
-<h3 id="5-绘制三角形"><a href="#5-绘制三角形" class="headerlink" title="5.绘制三角形"></a>5.绘制三角形</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">ctx.lineWidth = <span class="number">10</span>;</div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">200</span>);</div><div class="line">ctx.closePath(); <span class="comment">//自动闭合</span></div><div class="line">ctx.stroke();</div><div class="line"></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">250</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">250</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">350</span>);</div><div class="line">ctx.lineTo(<span class="number">100</span>,<span class="number">250</span>); <span class="comment">//手动闭合</span></div><div class="line">ctx.stroke();</div><div class="line"></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">300</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">400</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">400</span>,<span class="number">200</span>);</div><div class="line">ctx.fillStyle = <span class="string">'red'</span>; </div><div class="line">ctx.fill();</div><div class="line"></div><div class="line">ctx.beginPath();</div><div class="line">ctx.moveTo(<span class="number">300</span>,<span class="number">250</span>);</div><div class="line">ctx.lineTo(<span class="number">400</span>,<span class="number">250</span>);</div><div class="line">ctx.lineTo(<span class="number">400</span>,<span class="number">350</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>,<span class="number">250</span>); </div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
-<p>结果如图：<br><img src="http://i.imgur.com/nqgc4cP.png" alt=""></p>
-<p>可见：   </p>
-<ul>
-<li><code>ctx.closePath()</code>会根据起始点自动闭合路径，自动与手动闭合结果不同的原因见下一节</li>
-<li><code>ctx.fillStyle</code> 设置填充样式（可以设置颜色、渐变方案、图片） </li>
-<li><code>ctx.fill()</code> 填充，效果不受闭合方式的影响</li>
-</ul>
-<h3 id="6-描边的特性"><a href="#6-描边的特性" class="headerlink" title="6.描边的特性"></a>6.描边的特性</h3><p>要分析描边的特性，先看如下代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">100</span>);</div><div class="line">ctx.stroke();</div><div class="line">ctx.beginPath();</div><div class="line">ctx.lineWidth = <span class="number">2</span>;</div><div class="line">ctx.moveTo(<span class="number">200</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>,<span class="number">100</span>);</div><div class="line">ctx.stroke();</div><div class="line">ctx.beginPath();</div><div class="line">ctx.lineWidth = <span class="number">10</span>;</div><div class="line">ctx.moveTo(<span class="number">300</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">400</span>,<span class="number">100</span>);</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure></p>
-<p>结果如图：<br><img src="http://i.imgur.com/ishLcBV.png" alt=""></p>
-<p>三条线起始点纵坐标相同(均为100)，从宽度为2的线和宽度为10的线的关系可以分析出，描边是以起始点为基准向上和向下各瞄宽度的二分之一。<br>而之所以默认宽度1和宽度2的线实际呈现出的宽度一样（颜色略浅），是因为canvas无法表示0.5像素的宽度，所以只能按照上下均1像素来表示。<br>这种特性也解释了为什么手动闭合呈现出第五节的结果。</p>
-<h3 id="7-闭合的特性"><a href="#7-闭合的特性" class="headerlink" title="7.闭合的特性"></a>7.闭合的特性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*大正方形顺时针绘制*/</span></div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>,<span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">100</span>,<span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">100</span>,<span class="number">100</span>);</div><div class="line"><span class="comment">/*小正方形逆时针绘制*/</span>  </div><div class="line">ctx.moveTo(<span class="number">150</span>,<span class="number">150</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">250</span>);</div><div class="line">ctx.lineTo(<span class="number">250</span>,<span class="number">250</span>);</div><div class="line">ctx.lineTo(<span class="number">250</span>,<span class="number">150</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">150</span>);</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
-<p>结果如图：<br><img src="http://i.imgur.com/m3HoXyP.png" alt=""></p>
-<p><code>ctx.fill()</code>的填充规则-(非零环绕):从目标区域拉一条线每遇到顺时针路径+1，逆时针路径-1，如果最终结果不为0，则会被填充，反之则不会被填充。</p>
-
+        
+          <a class="article-more-a" href="/2016/08/20/canvas-2/#more">more >></a>
+        
       
 
       
@@ -229,7 +199,87 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/08/16/canvas/">展开全文 >></a>
+          <a class="article-more-a" href="/2016/08/20/canvas-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-canvas-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/16/canvas-1/">Canvas学习笔记-1</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/16/canvas-1/" class="archive-article-date">
+  	<time datetime="2016-08-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将结合具体事例说明。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Canvas是HTML5新增的元素，就像一块幕布，你可以在它上面绘制图表、动画等（利用JavaScript）。它的默认大小为300*150。</p>
+<h3 id="创建并获取canvas"><a href="#创建并获取canvas" class="headerlink" title="创建并获取canvas"></a>创建并获取canvas</h3><p>定义一个canvas元素，为了方便查看，你可以为其设置边框等样式：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>在JS中获取canvas：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*1.获取canvas元素*/</span></div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">'canvas'</span>);</div><div class="line"><span class="comment">/*2.获取绘制环境（绘制工具）*/</span></div><div class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</div></pre></td></tr></table></figure></p>
+<p>注：下面的代码都是基于此环境。<br>
+        
+          <a class="article-more-a" href="/2016/08/16/canvas-1/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Canvas</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/16/canvas-1/">展开全文 >></a>
         </p>
       
 
@@ -292,59 +342,11 @@
 <li><code>arg1,arg2,...</code><br>参数列表</li>
 </ul>
 <p>3.代码示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123;</div><div class="line">  foo:&apos;bar&apos;,</div><div class="line">  sayFoo : function (a,b,c) &#123;</div><div class="line">    console.log(this.foo,a,b,c);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">var obj2 = &#123;</div><div class="line">  foo:&apos;baz&apos;</div><div class="line">&#125;;</div><div class="line">obj1.sayFoo.call(obj2,1,2,3); //baz 1 2 3</div></pre></td></tr></table></figure>
-<p>这里obj1的sayFoo()方法中的this指向已经变成了obj2，因此输出结果为’baz 1 2 3’。</p>
-<p>4.应用场景：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"> function fn() &#123;</div><div class="line">   var arr = [].slice.apply(arguments);</div><div class="line">console.log(arr);</div><div class="line"> &#125;</div><div class="line"> fn(1,2,3); //[1,2,3]</div></pre></td></tr></table></figure>
-<p>借用数组的 slice 得到一个数组。</p>
-<h3 id="2-apply"><a href="#2-apply" class="headerlink" title="2.apply"></a>2.apply</h3><p>apply 会把数组展开，也就是把里面的元素一个一个的拿出来传递给方法。</p>
-<p>1.语法：</p>
-<p>fun.apply(thisArg, [argsArray])</p>
-<p>2.参数：</p>
-<ul>
-<li><p>thisArg</p>
-</li>
-<li><p>argsArray</p>
-</li>
-</ul>
-<p>apply() 与 call() 非常相似，不同之处在于提供参数的方式。 apply() 使用参数数组而不是一组参数列表。例如：</p>
-<p><code>fn.apply(this, [&#39;apple&#39;, &#39;bananas&#39;])</code></p>
-<p>3.代码示例：</p>
-<p>上面的例子，用aplly调用则应该写成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123;</div><div class="line">  foo:&apos;bar&apos;,</div><div class="line">  sayFoo : function (a,b,c) &#123;</div><div class="line">    console.log(this.foo,a,b,c);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">var obj2 = &#123;</div><div class="line">  foo:&apos;baz&apos;</div><div class="line">&#125;;</div><div class="line">obj1.sayFoo.apply(obj2,[1,2,3]); //baz 1 2 3</div></pre></td></tr></table></figure></p>
-<p>4.应用场景：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var arr = [1,2,5,12,8];</div><div class="line">var max = Math.max.apply(null , arr);</div><div class="line">console.log(max); //12</div></pre></td></tr></table></figure>
-<p>借用max()方法计算数组的最大值，由于这里并没有用到this，因此传递null。</p>
-<h3 id="3-bind"><a href="#3-bind" class="headerlink" title="3.bind"></a>3.bind</h3><p>bind 与call用法基本一致，但是它不立即调用，而是返回一个指定了 this 环境的新的函数。</p>
-<p>1.语法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fn.bind(thisArg[, arg1[, arg2[, ...]]]);</div></pre></td></tr></table></figure></p>
-<p>2.参数：</p>
-<ul>
-<li>thisArg</li>
-</ul>
-<p>当绑定函数被调用时，该参数会作为原函数运行时的 this 指向。当使用new 操作符调用绑定函数时，该参数无效。</p>
-<ul>
-<li>arg1, arg2, …</li>
-</ul>
-<p>当绑定函数被调用时，这些参数将置于实参之前传递给被绑定的方法。</p>
-<p>返回值：</p>
-<p>返回由指定的this值和初始化参数改造的原函数拷贝。</p>
-<p>3.代码示例：</p>
-<p>上面的例子，用bind调用则应该写成：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123;</div><div class="line">  foo:&apos;bar&apos;,</div><div class="line">  sayFoo : function (a,b,c) &#123;</div><div class="line">    console.log(this.foo,a,b,c);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">var obj2 = &#123;</div><div class="line">  foo:&apos;baz&apos;</div><div class="line">&#125;;</div><div class="line">var newSayFoo = obj1.sayFoo.bind(obj2,1,2,3); </div><div class="line">newSayFoo(); // baz 1 2 3</div></pre></td></tr></table></figure></p>
-<p>4.应用场景：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var obj = &#123;</div><div class="line">  foo:&apos;bar&apos;,</div><div class="line">  sayFoo : function () &#123;</div><div class="line">    setTimeout(function () &#123;</div><div class="line">        console.log(this)</div><div class="line">    &#125;.bind(this), 1000);</div><div class="line">    var arr = [1,2,3]</div><div class="line">    arr.forEach(function () &#123;</div><div class="line">      console.log(this);</div><div class="line">    &#125;.bind(this));</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line">obj.sayFoo();</div></pre></td></tr></table></figure>
-<p>由于其不会被立即执行的特性，bind多用于定时器，forEach等需要讲函数作为参数的方法。</p>
-<h3 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h3><h4 id="call-和-apply"><a href="#call-和-apply" class="headerlink" title="call 和 apply"></a>call 和 apply</h4><ul>
-<li>都是用来调用函数，而且是立即调用</li>
-<li>但是可以在调用函数的同时，通过第一个参数指定函数内部 this 的指向</li>
-<li>call 调用的时候，参数必须以参数列表的形式进行传递，也就是以逗号分隔的方式依次传递即可</li>
-<li>apply 调用的时候，参数必须是一个数组，然后在执行的时候，会将数组内部的元素一个一个拿出来，与形参一一对应进行传递</li>
-<li>如果第一个参数指定了 null 或者 undefined 则内部 this 指向 window</li>
-</ul>
-<h4 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h4><ul>
-<li>可以用来指定内部 this 的指向，然后生成一个改变了 this 指向的新的函数</li>
-<li>它和 call、apply 最大的区别是：bind 不会调用</li>
-<li>bind 支持传递参数，它的传参方式比较特殊，一共有两个位置可以传递<br>a)在 bind 的同时，以参数列表的形式进行传递<br>b)在调用的时候，以参数列表的形式进行传递<br>c)bind 的时候传递的参数和调用的时候传递的参数会合并到一起，传递到函数内部</li>
-</ul>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">  foo:<span class="string">'bar'</span>,</div><div class="line">  sayFoo : <span class="function"><span class="keyword">function</span> (<span class="params">a,b,c</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.foo,a,b,c);</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> obj2 = &#123;</div><div class="line">  foo:<span class="string">'baz'</span></div><div class="line">&#125;;</div><div class="line">obj1.sayFoo.call(obj2,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>); <span class="comment">//baz 1 2 3</span></div></pre></td></tr></table></figure>
+<p>这里obj1的sayFoo()方法中的this指向已经变成了obj2，因此输出结果为’baz 1 2 3’。<br>
+        
+          <a class="article-more-a" href="/2015/08/25/JS中的call、apply、bind/#more">more >></a>
+        
       
 
       
@@ -425,18 +427,10 @@
 <p>2.所有被构造函数创建的实例对象都拥有<code>__proto__</code>属性(只有在高版本浏览器才能查看)指向其构造函数的原型对象。</p>
 <p>3.实例对象可以通过<code>__proto__</code>属性，共享访问原型对象上的属性和方法。</p>
 <p>下面以一段简单的代码举例。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Student(name,age)&#123;</div><div class="line">  this.name = name;</div><div class="line">  this.age = age;  	</div><div class="line">&#125;;</div><div class="line">Student.prototype.sayHi = function()&#123;</div><div class="line">  console.log(this.name);</div><div class="line">&#125;;</div><div class="line">var xiaoMing = new Student(&apos;小明&apos;,18);  </div><div class="line">var xiaoHong = new Student(&apos;小红&apos;,19);</div><div class="line">xiaoMing.sayHi();	 //小明</div></pre></td></tr></table></figure>
-<p>在这段代码中：</p>
-<ul>
-<li><code>xiaoMing</code>为构造函数<code>Student</code>的<strong>实例对象</strong>。</li>
-<li><code>Student</code>拥有原型对象<code>Student.prototype</code>。</li>
-<li><code>xiaoMing</code>的<code>__proto__</code>属性<strong>指向了<code>Student</code>的原型对象即<code>Student.prototype</code></strong>。</li>
-<li>因此<code>xiaoMing</code>可以访问<code>Student.prototype</code>上的属性和方法。<br>它们间的关系见下图：</li>
-</ul>
-<p><img src="/assets/blogImg/prototype1.png" alt=""></p>
-<p>我们可以进行简单的验证。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">console.log(xiaoMing.__proto__ === Student.prototype); //true</div><div class="line">console.log(xiaoMing.sayHi === xiaoHong.sayHi); //true</div></pre></td></tr></table></figure></p>
-<p>这样所有的实例对象都共享同一个sayHi方法了，避免了内存的浪费。</p>
-
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.age = age;  	</div><div class="line">&#125;;</div><div class="line">Student.prototype.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> xiaoMing = <span class="keyword">new</span> Student(<span class="string">'小明'</span>,<span class="number">18</span>);  </div><div class="line"><span class="keyword">var</span> xiaoHong = <span class="keyword">new</span> Student(<span class="string">'小红'</span>,<span class="number">19</span>);</div><div class="line">xiaoMing.sayHi();	 <span class="comment">//小明</span></div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2015/08/20/JS的原型链/#more">more >></a>
+        
       
 
       
@@ -512,25 +506,12 @@
         <p>简单写一下自己对构造函数的理解，如果发现错误欢迎指正。</p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>掌握构造函数，可以更好的理解面向对象及原型链。</p>
 <h3 id="1-什么是构造函数"><a href="#1-什么是构造函数" class="headerlink" title="1.什么是构造函数"></a>1.什么是构造函数</h3><p>形如下面的代码就是构造函数，它可以更加优雅的创建对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function Student(name,age)&#123;</div><div class="line">  this.name = name;</div><div class="line">  this.age = age;  </div><div class="line">  this.sayHi =	function()&#123;</div><div class="line">    console.log(this.name);</div><div class="line">  &#125;;</div><div class="line">&#125;;</div><div class="line">var xiaoMing = new Student(&apos;小明&apos;,18);  </div><div class="line">var xiaoHong = new Student(&apos;小红&apos;,19);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.age = age;  </div><div class="line">  <span class="keyword">this</span>.sayHi =	<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">  &#125;;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> xiaoMing = <span class="keyword">new</span> Student(<span class="string">'小明'</span>,<span class="number">18</span>);  </div><div class="line"><span class="keyword">var</span> xiaoHong = <span class="keyword">new</span> Student(<span class="string">'小红'</span>,<span class="number">19</span>);</div></pre></td></tr></table></figure>
 <p>构造函数也是普通的函数，只不过可以通过 new 关键字来创建实例对象。</p>
 <p>建议构造函数的第一个字母大写，否则会让读你代码的人体验很差。</p>
-<h3 id="2-构造函数的执行"><a href="#2-构造函数的执行" class="headerlink" title="2.构造函数的执行"></a>2.构造函数的执行</h3><p>通过构造函数创建实例，必须使用 new 关键字。以这种方式调用构造函数会经历以下 4 个步骤：</p>
-<ul>
-<li>创建一个新对象</li>
-<li>将构造函数的作用域指向新对象（因此 this 就指向了这个新对象）</li>
-<li>执行构造函数中的代码</li>
-<li>返回新对象<br>下面是具体的伪代码：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function Student(name,age)&#123;</div><div class="line">  // 创建一个新对象</div><div class="line">  // var instance = &#123;&#125;;</div><div class="line">  </div><div class="line">  // 将构造函数的作用域指向新对象</div><div class="line">  // this = instance;</div><div class="line">  </div><div class="line">  // 执行构造函数中的代码</div><div class="line">  this.name = name;</div><div class="line">  this.age = age;  </div><div class="line">  this.sayHi = function()&#123;</div><div class="line">    console.log(this.name);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  // 返回新对象</div><div class="line">  //return this;</div><div class="line">&#125;;</div><div class="line">var xiaoMing = new Student(&apos;小明&apos;,18);  </div><div class="line">var xiaoHong = new Student(&apos;小红&apos;,19);</div></pre></td></tr></table></figure>
-<p>解构造函数在执行时，底层为我们隐式的执行了以上操作。</p>
-<h3 id="3-实例对象和构造函数的关系"><a href="#3-实例对象和构造函数的关系" class="headerlink" title="3.实例对象和构造函数的关系"></a>3.实例对象和构造函数的关系</h3><p>由构造函数创建的实例对象都拥有<code>constructor</code> 属性，该属性指向创建该实例对象的构造函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(xiaoMing.constructor === Student); // true</div></pre></td></tr></table></figure>
-<p>对象的 <code>constructor</code> 属性最初就是用来标识对象类型的， 但是，如果要检测对象的类型，还是建议使用 instanceof 操作符(原因在后续博文“JS的原型链”中会解释)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(xiaoMing instanceof Student) //  true</div></pre></td></tr></table></figure>
-<h3 id="4-使用构造函数的问题"><a href="#4-使用构造函数的问题" class="headerlink" title="4.使用构造函数的问题"></a>4.使用构造函数的问题</h3><p>像第一节那样使用构造函数，会产生一个问题，对于每一个实例对象，sayHi方法的功能都一样。但是每生成一个实例对象，都会重复创建方法，造成内存的浪费。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">console.log(xiaoMing.sayHi === xiaoHong.sayHi); //false</div></pre></td></tr></table></figure></p>
-<p>还好我们可以用原型来解决这个问题，请参考博文“JS的原型链”。</p>
-
+        
+          <a class="article-more-a" href="/2015/08/16/JS的构造函数/#more">more >></a>
+        
       
 
       
@@ -607,18 +588,10 @@
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>总的来说可以理解为谁调用，this即指向谁，特殊场景视情况而定。</p>
 <p>根据函数的调用方式，这里归纳了几种 this 的指向情况：</p>
 <p><img src="/assets/blogImg/this.png" alt=""></p>
-<p>下面根据这几种情况，分别介绍说明：</p>
-<h3 id="1-普通函数调用"><a href="#1-普通函数调用" class="headerlink" title="1.普通函数调用"></a>1.普通函数调用</h3><p>挂载在全局作用域下的函数，相当于为window添加了一个方法。</p>
-<p>fn()语句调用函数，等价于window.fn()调用函数(对象调用函数)。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">  console.log(this);  </div><div class="line">&#125;</div><div class="line">fn(); //指向window</div><div class="line">console.log(fn === window.fn); //true</div></pre></td></tr></table></figure>
-<p>补充：函数内部的函数中this指向window</p>
-<h3 id="2-构造函数调用"><a href="#2-构造函数调用" class="headerlink" title="2.构造函数调用"></a>2.构造函数调用</h3><p>使用new关键字调用构造函数，构造函数内部的this指向实例对象，关于构造函数的原理，请参见： ？？？？   。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Fn()&#123;</div><div class="line">  console.log(this);  </div><div class="line">&#125;</div><div class="line">var foo = new Fn(); //指向实例对象</div></pre></td></tr></table></figure></p>
-<h3 id="3-对象方法调用"><a href="#3-对象方法调用" class="headerlink" title="3.对象方法调用"></a>3.对象方法调用</h3><p>对象调用方法时，this指向该方法所属对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function fn()&#123;</div><div class="line">  console.log(this);  </div><div class="line">&#125;</div><div class="line">var obj = &#123;</div><div class="line">  name : &apos;obj&apos;,</div><div class="line">  sayFoo : fn,</div><div class="line">  demo : &#123;</div><div class="line">    name : &apos;demo&apos;,</div><div class="line">    sayFoo : fn</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">obj.sayFoo(); //指向obj</div><div class="line">obj.demo.sayFoo(); //指向demo</div></pre></td></tr></table></figure>
-<h3 id="4-事件绑定方法"><a href="#4-事件绑定方法" class="headerlink" title="4.事件绑定方法"></a>4.事件绑定方法</h3><p>事件处理函数内部的this,指向触发事件的dom对象。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;ul&gt;</div><div class="line">  &lt;li&gt;榴莲&lt;/li&gt;</div><div class="line">  &lt;li&gt;臭豆腐&lt;/li&gt;</div><div class="line">  &lt;li&gt;韭菜盒子&lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line">--------------------下面为js代码---------------------</div><div class="line">var list = document.querySelectorAll(&apos;li&apos;);</div><div class="line">list.forEach(function(item)&#123;</div><div class="line">  item.addEventListener(&apos;click&apos;,function()&#123;</div><div class="line">    console.log(this); //指向被点击的dom对象</div><div class="line">  &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="5-定时器函数"><a href="#5-定时器函数" class="headerlink" title="5.定时器函数"></a>5.定时器函数</h3><p>在定时器内部的this，指向window。</p>
-
+<p>下面根据这几种情况，分别介绍说明：<br>
+        
+          <a class="article-more-a" href="/2015/08/11/浅谈JavaScript的this指向/#more">more >></a>
+        
       
 
       
@@ -694,27 +667,10 @@
         <p>本文重点介绍Hexo的安装和配置，node、git的概念和用法不做赘述。<br>：）</p>
 <h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><h3 id="1-前置环境安装"><a href="#1-前置环境安装" class="headerlink" title="1.前置环境安装"></a>1.前置环境安装</h3><p>确保已经安装好<a href="https://nodejs.org/en" target="_blank" rel="external">Node.js</a>、<a href="https://git-scm.com/" target="_blank" rel="external">git</a>、申请了<a href="https://github.com/" target="_blank" rel="external">github</a>帐号(建议配置SSH Keys) </p>
 <h3 id="2-安装Hexo软件"><a href="#2-安装Hexo软件" class="headerlink" title="2.安装Hexo软件"></a>2.安装Hexo软件</h3><p>进入cmd命令行，执行命令 <code>npm install hexo-cli --global</code></p>
-<p>可通过 <code>hexo --version</code> 命令查看是否安装成功</p>
-<h3 id="2-生成博客"><a href="#2-生成博客" class="headerlink" title="2.生成博客"></a>2.生成博客</h3><p>在你想要存放博客的位置创建文件夹，如D:\blog，在cmd中进入此目录<br><img src="http://i.imgur.com/mUzUrVJ.png" alt=""></p>
-<p>执行 <code>hexo init</code></p>
-<h3 id="3-预览博客"><a href="#3-预览博客" class="headerlink" title="3.预览博客"></a>3.预览博客</h3><p>你可以在本地启动服务预览博客</p>
-<p>执行 <code>hexo server</code>命令，默认地址为 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
-<h3 id="4-在github上创建仓库"><a href="#4-在github上创建仓库" class="headerlink" title="4.在github上创建仓库"></a>4.在github上创建仓库</h3><p>用户名必须为  ‘你的用户名’.github.io，这样做是为了可以通过 <a href="https://&#39;你的用户名&#39;.github.io/" target="_blank" rel="external">https://&#39;你的用户名&#39;.github.io/</a> 访问你的博客</p>
-<h3 id="5-配置本地文件"><a href="#5-配置本地文件" class="headerlink" title="5.配置本地文件"></a>5.配置本地文件</h3><p>打开你的blog文件夹下的vim _config.yml文件，修改最下面deploy的内容，下面是我配置好的截图</p>
-<p><img src="http://i.imgur.com/IgETRS9.png" alt=""></p>
-<p>其中repo这一行，github支持HTTPS和SSH两种协议，根据自己的情况自行选择<br>mobile-xd是我自己的用户名，请修改为你的用户名</p>
-<p>配置好后执行命令 <code>npm install hexo-deployer-git --save</code></p>
-<p>上面的步骤完成后，就完成了基本的部署，登录一下试试吧。</p>
-<h2 id="Hexo的基本操作"><a href="#Hexo的基本操作" class="headerlink" title="Hexo的基本操作"></a>Hexo的基本操作</h2><h3 id="1-同步"><a href="#1-同步" class="headerlink" title="1.同步"></a>1.同步</h3><p>依次执行以下三个命令，完成同步</p>
-<p><code>hexo clean</code><br><code>hexo generate</code><br><code>hexo deploy</code>  </p>
-<h3 id="2-常用命令"><a href="#2-常用命令" class="headerlink" title="2.常用命令"></a>2.常用命令</h3><p>新建文章 <code>hexo new&quot;postName&quot;</code> </p>
-<p>新建页面 <code>hexo new page&quot;pageName&quot;</code> </p>
-<p>生成静态页面至public目录 <code>hexo generate</code> </p>
-<p>开启预览访问端口（默认端口4000，’ctrl + c’关闭server） <code>hexo server</code> </p>
-<p>将.deploy目录部署到GitHub <code>hexo deploy</code> </p>
-<p>查看帮助 <code>hexo help</code> </p>
-<p>查看Hexo的版本 <code>hexo version</code> </p>
-
+<p>可通过 <code>hexo --version</code> 命令查看是否安装成功<br>
+        
+          <a class="article-more-a" href="/2015/06/11/安装配置Hexo/#more">more >></a>
+        
       
 
       

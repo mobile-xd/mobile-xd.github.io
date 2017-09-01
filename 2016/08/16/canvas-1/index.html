@@ -6,15 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Canvas学习笔记 | Better late than never</title>
+  <title>Canvas学习笔记-1 | Better late than never</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将由具体事例引出。 概述Canvas是HTML5新增的元素，就像一块幕布，你可以在它上面绘制图表、动画等（利用JavaScript）。它的默认大小为300*150。 创建并获取canvas定义一个canvas元素，为了方便查看，你可以为其设置边框等样式：1&amp;lt;canvas width=&quot;600&quot; height=&quot;400&quot;&amp;gt;&amp;">
+  <meta name="description" content="本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将结合具体事例说明。 概述Canvas是HTML5新增的元素，就像一块幕布，你可以在它上面绘制图表、动画等（利用JavaScript）。它的默认大小为300*150。 创建并获取canvas定义一个canvas元素，为了方便查看，你可以为其设置边框等样式：1&amp;lt;canvas width=&quot;600&quot; height=&quot;400&quot;&amp;gt;">
 <meta name="keywords" content="Canvas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Canvas学习笔记">
-<meta property="og:url" content="http://yoursite.com/2016/08/16/canvas/index.html">
+<meta property="og:title" content="Canvas学习笔记-1">
+<meta property="og:url" content="http://yoursite.com/2016/08/16/canvas-1/index.html">
 <meta property="og:site_name" content="Better late than never">
-<meta property="og:description" content="本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将由具体事例引出。 概述Canvas是HTML5新增的元素，就像一块幕布，你可以在它上面绘制图表、动画等（利用JavaScript）。它的默认大小为300*150。 创建并获取canvas定义一个canvas元素，为了方便查看，你可以为其设置边框等样式：1&amp;lt;canvas width=&quot;600&quot; height=&quot;400&quot;&amp;gt;&amp;">
+<meta property="og:description" content="本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将结合具体事例说明。 概述Canvas是HTML5新增的元素，就像一块幕布，你可以在它上面绘制图表、动画等（利用JavaScript）。它的默认大小为300*150。 创建并获取canvas定义一个canvas元素，为了方便查看，你可以为其设置边框等样式：1&amp;lt;canvas width=&quot;600&quot; height=&quot;400&quot;&amp;gt;">
 <meta property="og:image" content="http://i.imgur.com/rwBHw1r.png">
 <meta property="og:image" content="http://i.imgur.com/YIP81fy.png">
 <meta property="og:image" content="http://i.imgur.com/aUiWRQO.png">
@@ -22,10 +22,11 @@
 <meta property="og:image" content="http://i.imgur.com/nqgc4cP.png">
 <meta property="og:image" content="http://i.imgur.com/ishLcBV.png">
 <meta property="og:image" content="http://i.imgur.com/m3HoXyP.png">
-<meta property="og:updated_time" content="2017-09-01T10:20:03.054Z">
+<meta property="og:image" content="http://i.imgur.com/MnAMoKG.png">
+<meta property="og:updated_time" content="2017-09-01T12:29:12.855Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Canvas学习笔记">
-<meta name="twitter:description" content="本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将由具体事例引出。 概述Canvas是HTML5新增的元素，就像一块幕布，你可以在它上面绘制图表、动画等（利用JavaScript）。它的默认大小为300*150。 创建并获取canvas定义一个canvas元素，为了方便查看，你可以为其设置边框等样式：1&amp;lt;canvas width=&quot;600&quot; height=&quot;400&quot;&amp;gt;&amp;">
+<meta name="twitter:title" content="Canvas学习笔记-1">
+<meta name="twitter:description" content="本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将结合具体事例说明。 概述Canvas是HTML5新增的元素，就像一块幕布，你可以在它上面绘制图表、动画等（利用JavaScript）。它的默认大小为300*150。 创建并获取canvas定义一个canvas元素，为了方便查看，你可以为其设置边框等样式：1&amp;lt;canvas width=&quot;600&quot; height=&quot;400&quot;&amp;gt;">
 <meta name="twitter:image" content="http://i.imgur.com/rwBHw1r.png">
   
     <link rel="alternative" href="/atom.xml" title="Better late than never" type="application/atom+xml">
@@ -156,19 +157,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-canvas" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-canvas-1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Canvas学习笔记
+      Canvas学习笔记-1
     </h1>
   
 
         
-        <a href="/2016/08/16/canvas/" class="archive-article-date">
+        <a href="/2016/08/16/canvas-1/" class="archive-article-date">
   	<time datetime="2016-08-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-16</time>
 </a>
         
@@ -176,11 +177,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将由具体事例引出。</p>
+        <p>本文总结了Canvas中常用的知识点，为了方便理解，这些知识点都将结合具体事例说明。</p>
 <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Canvas是HTML5新增的元素，就像一块幕布，你可以在它上面绘制图表、动画等（利用JavaScript）。它的默认大小为300*150。</p>
 <h3 id="创建并获取canvas"><a href="#创建并获取canvas" class="headerlink" title="创建并获取canvas"></a>创建并获取canvas</h3><p>定义一个canvas元素，为了方便查看，你可以为其设置边框等样式：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"400"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>在JS中获取canvas：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*1.获取canvas元素*/</span></div><div class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.querySelector(<span class="string">'canvas'</span>);</div><div class="line"><span class="comment">/*2.获取绘制环境（绘制工具）*/</span></div><div class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>);</div></pre></td></tr></table></figure></p>
-<p>注：下面的代码都是基于此环境。</p>
+<p>注：下面的代码都是基于此环境。<br><a id="more"></a></p>
 <h2 id="线条"><a href="#线条" class="headerlink" title="线条"></a>线条</h2><h3 id="1-绘制线条"><a href="#1-绘制线条" class="headerlink" title="1.绘制线条"></a>1.绘制线条</h3><p>利用canvas绘制线条：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*3.设置起始绘图的位置*/</span></div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>); <span class="comment">//两个参数分别为横坐标、纵坐标</span></div><div class="line"><span class="comment">/*4.绘制路径 */</span></div><div class="line">ctx.lineTo(<span class="number">200</span>,<span class="number">100</span>); <span class="comment">//两个参数分别为横坐标、纵坐标</span></div><div class="line"><span class="comment">/*5.描边*/</span></div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure></p>
 <p>结果如图：<br><img src="http://i.imgur.com/rwBHw1r.png" alt=""></p>
 <p>canvas的坐标轴如图，箭头方向为正方向，因此上述代码画了一条由坐标(100,100)到坐标(200,100)的线。</p>
@@ -217,6 +218,8 @@
 <h3 id="7-闭合的特性"><a href="#7-闭合的特性" class="headerlink" title="7.闭合的特性"></a>7.闭合的特性</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*大正方形顺时针绘制*/</span></div><div class="line">ctx.moveTo(<span class="number">100</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>,<span class="number">100</span>);</div><div class="line">ctx.lineTo(<span class="number">300</span>,<span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">100</span>,<span class="number">300</span>);</div><div class="line">ctx.lineTo(<span class="number">100</span>,<span class="number">100</span>);</div><div class="line"><span class="comment">/*小正方形逆时针绘制*/</span>  </div><div class="line">ctx.moveTo(<span class="number">150</span>,<span class="number">150</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">250</span>);</div><div class="line">ctx.lineTo(<span class="number">250</span>,<span class="number">250</span>);</div><div class="line">ctx.lineTo(<span class="number">250</span>,<span class="number">150</span>);</div><div class="line">ctx.lineTo(<span class="number">150</span>,<span class="number">150</span>);</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
 <p>结果如图：<br><img src="http://i.imgur.com/m3HoXyP.png" alt=""></p>
 <p><code>ctx.fill()</code>的填充规则-(非零环绕):从目标区域拉一条线每遇到顺时针路径+1，逆时针路径-1，如果最终结果不为0，则会被填充，反之则不会被填充。</p>
+<h3 id="8-练习题"><a href="#8-练习题" class="headerlink" title="8.练习题"></a>8.练习题</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*下面是基于现实坐标系的一组坐标，请尝试着画出对应的折线图*/</span></div><div class="line"><span class="keyword">var</span> data = [</div><div class="line">	&#123;<span class="attr">x</span>: <span class="number">100</span>, <span class="attr">y</span>: <span class="number">80</span>&#125;,</div><div class="line">	&#123;<span class="attr">x</span>: <span class="number">200</span>, <span class="attr">y</span>: <span class="number">120</span>&#125;,</div><div class="line">	&#123;<span class="attr">x</span>: <span class="number">300</span>, <span class="attr">y</span>: <span class="number">250</span>&#125;,</div><div class="line">	&#123;<span class="attr">x</span>: <span class="number">400</span>, <span class="attr">y</span>: <span class="number">340</span>&#125;,</div><div class="line">	&#123;<span class="attr">x</span>: <span class="number">500</span>, <span class="attr">y</span>: <span class="number">230</span>&#125;</div><div class="line">];</div></pre></td></tr></table></figure>
+<p>结果：<br><img src="http://i.imgur.com/MnAMoKG.png" alt=""></p>
 
       
 
@@ -317,7 +320,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/08/16/canvas/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2016/08/16/canvas-1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -330,6 +333,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2016/08/20/canvas-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Canvas学习笔记-2
+        
+      </div>
+    </a>
   
   
     <a href="/2015/08/25/JS中的call、apply、bind/" id="article-nav-older" class="article-nav-link-wrap">
