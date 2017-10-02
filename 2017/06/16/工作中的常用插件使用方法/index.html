@@ -6,21 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>安装配置Hexo | Better late than never</title>
+  <title>JS的构造函数 | Better late than never</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文重点介绍Hexo的安装和配置，node、git的概念和用法不做赘述。：） 安装Hexo1.前置环境安装确保已经安装好Node.js、git、申请了github帐号(建议配置SSH Keys)  2.安装Hexo软件进入cmd命令行，执行命令 npm install hexo-cli --global 可通过 hexo --version 命令查看是否安装成功">
+  <meta name="description" content="汇总一下遇到过的插件，方便以后使用。 下载地址下面涉及到的插件都上传到网盘中了。地址候补。 1.cookiecookie依赖JQuery。 1234//设置，value要存字符串，使用JSON.stringify()转换$.cookie(key，value);//读取，使用JSON.parse()转回对象var value = $.cookie(key);">
+<meta name="keywords" content="插件 cookie">
 <meta property="og:type" content="article">
-<meta property="og:title" content="安装配置Hexo">
-<meta property="og:url" content="http://yoursite.com/2015/06/11/安装配置Hexo/index.html">
+<meta property="og:title" content="JS的构造函数">
+<meta property="og:url" content="http://yoursite.com/2017/06/16/工作中的常用插件使用方法/index.html">
 <meta property="og:site_name" content="Better late than never">
-<meta property="og:description" content="本文重点介绍Hexo的安装和配置，node、git的概念和用法不做赘述。：） 安装Hexo1.前置环境安装确保已经安装好Node.js、git、申请了github帐号(建议配置SSH Keys)  2.安装Hexo软件进入cmd命令行，执行命令 npm install hexo-cli --global 可通过 hexo --version 命令查看是否安装成功">
-<meta property="og:image" content="http://i.imgur.com/mUzUrVJ.png">
-<meta property="og:image" content="http://i.imgur.com/IgETRS9.png">
-<meta property="og:updated_time" content="2017-09-01T12:25:33.646Z">
+<meta property="og:description" content="汇总一下遇到过的插件，方便以后使用。 下载地址下面涉及到的插件都上传到网盘中了。地址候补。 1.cookiecookie依赖JQuery。 1234//设置，value要存字符串，使用JSON.stringify()转换$.cookie(key，value);//读取，使用JSON.parse()转回对象var value = $.cookie(key);">
+<meta property="og:updated_time" content="2017-10-02T09:33:11.948Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="安装配置Hexo">
-<meta name="twitter:description" content="本文重点介绍Hexo的安装和配置，node、git的概念和用法不做赘述。：） 安装Hexo1.前置环境安装确保已经安装好Node.js、git、申请了github帐号(建议配置SSH Keys)  2.安装Hexo软件进入cmd命令行，执行命令 npm install hexo-cli --global 可通过 hexo --version 命令查看是否安装成功">
-<meta name="twitter:image" content="http://i.imgur.com/mUzUrVJ.png">
+<meta name="twitter:title" content="JS的构造函数">
+<meta name="twitter:description" content="汇总一下遇到过的插件，方便以后使用。 下载地址下面涉及到的插件都上传到网盘中了。地址候补。 1.cookiecookie依赖JQuery。 1234//设置，value要存字符串，使用JSON.stringify()转换$.cookie(key，value);//读取，使用JSON.parse()转回对象var value = $.cookie(key);">
   
     <link rel="alternative" href="/atom.xml" title="Better late than never" type="application/atom+xml">
   
@@ -150,49 +148,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-安装配置Hexo" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-工作中的常用插件使用方法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      安装配置Hexo
+      JS的构造函数
     </h1>
   
 
         
-        <a href="/2015/06/11/安装配置Hexo/" class="archive-article-date">
-  	<time datetime="2015-06-10T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-06-11</time>
+        <a href="/2017/06/16/工作中的常用插件使用方法/" class="archive-article-date">
+  	<time datetime="2017-06-15T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-16</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本文重点介绍Hexo的安装和配置，node、git的概念和用法不做赘述。<br>：）</p>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><h3 id="1-前置环境安装"><a href="#1-前置环境安装" class="headerlink" title="1.前置环境安装"></a>1.前置环境安装</h3><p>确保已经安装好<a href="https://nodejs.org/en" target="_blank" rel="external">Node.js</a>、<a href="https://git-scm.com/" target="_blank" rel="external">git</a>、申请了<a href="https://github.com/" target="_blank" rel="external">github</a>帐号(建议配置SSH Keys) </p>
-<h3 id="2-安装Hexo软件"><a href="#2-安装Hexo软件" class="headerlink" title="2.安装Hexo软件"></a>2.安装Hexo软件</h3><p>进入cmd命令行，执行命令 <code>npm install hexo-cli --global</code></p>
-<p>可通过 <code>hexo --version</code> 命令查看是否安装成功<br><a id="more"></a></p>
-<h3 id="2-生成博客"><a href="#2-生成博客" class="headerlink" title="2.生成博客"></a>2.生成博客</h3><p>在你想要存放博客的位置创建文件夹，如D:\blog，在cmd中进入此目录<br><img src="http://i.imgur.com/mUzUrVJ.png" alt=""></p>
-<p>执行 <code>hexo init</code></p>
-<h3 id="3-预览博客"><a href="#3-预览博客" class="headerlink" title="3.预览博客"></a>3.预览博客</h3><p>你可以在本地启动服务预览博客</p>
-<p>执行 <code>hexo server</code>命令，默认地址为 <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
-<h3 id="4-在github上创建仓库"><a href="#4-在github上创建仓库" class="headerlink" title="4.在github上创建仓库"></a>4.在github上创建仓库</h3><p>用户名必须为  ‘你的用户名’.github.io，这样做是为了可以通过 <a href="https://&#39;你的用户名&#39;.github.io/" target="_blank" rel="external">https://&#39;你的用户名&#39;.github.io/</a> 访问你的博客</p>
-<h3 id="5-配置本地文件"><a href="#5-配置本地文件" class="headerlink" title="5.配置本地文件"></a>5.配置本地文件</h3><p>打开你的blog文件夹下的vim _config.yml文件，修改最下面deploy的内容，下面是我配置好的截图</p>
-<p><img src="http://i.imgur.com/IgETRS9.png" alt=""></p>
-<p>其中repo这一行，github支持HTTPS和SSH两种协议，根据自己的情况自行选择<br>mobile-xd是我自己的用户名，请修改为你的用户名</p>
-<p>配置好后执行命令 <code>npm install hexo-deployer-git --save</code></p>
-<p>上面的步骤完成后，就完成了基本的部署，登录一下试试吧。</p>
-<h2 id="Hexo的基本操作"><a href="#Hexo的基本操作" class="headerlink" title="Hexo的基本操作"></a>Hexo的基本操作</h2><h3 id="1-同步"><a href="#1-同步" class="headerlink" title="1.同步"></a>1.同步</h3><p>依次执行以下三个命令，完成同步</p>
-<p><code>hexo clean</code><br><code>hexo generate</code><br><code>hexo deploy</code>  </p>
-<h3 id="2-常用命令"><a href="#2-常用命令" class="headerlink" title="2.常用命令"></a>2.常用命令</h3><p>新建文章 <code>hexo new&quot;postName&quot;</code> </p>
-<p>新建页面 <code>hexo new page&quot;pageName&quot;</code> </p>
-<p>生成静态页面至public目录 <code>hexo generate</code> </p>
-<p>开启预览访问端口（默认端口4000，’ctrl + c’关闭server） <code>hexo server</code> </p>
-<p>将.deploy目录部署到GitHub <code>hexo deploy</code> </p>
-<p>查看帮助 <code>hexo help</code> </p>
-<p>查看Hexo的版本 <code>hexo version</code> </p>
+        <p>汇总一下遇到过的插件，方便以后使用。</p>
+<h2 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h2><p>下面涉及到的插件都上传到网盘中了。<br>地址候补。</p>
+<h3 id="1-cookie"><a href="#1-cookie" class="headerlink" title="1.cookie"></a>1.cookie</h3><p>cookie依赖JQuery。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//设置，value要存字符串，使用JSON.stringify()转换</span></div><div class="line">$.cookie(key，value);</div><div class="line"><span class="comment">//读取，使用JSON.parse()转回对象</span></div><div class="line"><span class="keyword">var</span> value = $.cookie(key);</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="2-uploadify（上传文件）"><a href="#2-uploadify（上传文件）" class="headerlink" title="2.uploadify（上传文件）"></a>2.uploadify（上传文件）</h3><p>依赖JQuery，用于文件上传</p>
+<p>html部分：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">'file'</span> <span class="attr">id</span>=<span class="string">'fileLoad'</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>js部分：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#upfile"</span>).uploadify(&#123;</div><div class="line">      width:<span class="number">120</span>,</div><div class="line">      height:<span class="number">120</span>,</div><div class="line">      buttonText:<span class="string">''</span>,</div><div class="line">      itemTemplate:<span class="string">'&lt;span&gt;&lt;/span&gt;'</span>,</div><div class="line">      swf:<span class="string">'/public/assets/jquery-uploadify/uploadify.swf'</span>,</div><div class="line">      uploader:<span class="string">'/api/uploader/avatar'</span>,</div><div class="line">      fileObjName:<span class="string">'tc_avatar'</span>,</div><div class="line">      onUploadSuccess:<span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>) </span>&#123;</div><div class="line">        obj=<span class="built_in">JSON</span>.parse(b);</div><div class="line">        <span class="keyword">if</span>(obj.code === <span class="number">200</span>)&#123;</div><div class="line">          $(<span class="string">'.preview img'</span>).attr(<span class="string">'src'</span>,obj.result.path);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="3-region（省级联动）"><a href="#3-region（省级联动）" class="headerlink" title="3.region（省级联动）"></a>3.region（省级联动）</h3><p>html部分：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'region'</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">'p'</span>&gt;</span></div><div class="line">       <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"0"</span>&gt;</span>请选择省<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">'c'</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"0"</span>&gt;</span>请选择市<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">'d'</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"0"</span>&gt;</span>请选择区/县<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>js部分：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#region"</span>).region(&#123;</div><div class="line">  url:<span class="string">'插件的url地址'</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="4-ckeditor"><a href="#4-ckeditor" class="headerlink" title="4.ckeditor"></a>4.ckeditor</h3><p>html部分：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">id</span>=<span class="string">'editor'</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>js部分：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">CKEDITOR.replace(<span class="string">'editor'</span>,&#123;</div><div class="line">        toolbar :</div><div class="line">          [</div><div class="line">            <span class="comment">//加粗     斜体，     下划线      穿过线      下标字        上标字</span></div><div class="line">            [<span class="string">'Bold'</span>,<span class="string">'Italic'</span>,<span class="string">'Underline'</span>,<span class="string">'Strike'</span>,<span class="string">'Subscript'</span>,<span class="string">'Superscript'</span>],</div><div class="line">            <span class="comment">// 数字列表          实体列表            减小缩进    增大缩进</span></div><div class="line">            [<span class="string">'NumberedList'</span>,<span class="string">'BulletedList'</span>,<span class="string">'-'</span>,<span class="string">'Outdent'</span>,<span class="string">'Indent'</span>],</div><div class="line">            <span class="comment">//左对 齐             居中对齐          右对齐          两端对齐</span></div><div class="line">            [<span class="string">'JustifyLeft'</span>,<span class="string">'JustifyCenter'</span>,<span class="string">'JustifyRight'</span>,<span class="string">'JustifyBlock'</span>],</div><div class="line">            <span class="comment">//超链接  取消超链接 锚点</span></div><div class="line">            [<span class="string">'Link'</span>,<span class="string">'Unlink'</span>,<span class="string">'Anchor'</span>],</div><div class="line">            <span class="comment">/*//图片    flash    表格       水平线            表情       特殊字符        分页符</span></div><div class="line"><span class="comment">            ['Image','Flash','Table','HorizontalRule','Smiley','SpecialChar','PageBreak'],</span></div><div class="line"><span class="comment">            '/',</span></div><div class="line"><span class="comment">            // 样式       格式      字体    字体大小</span></div><div class="line"><span class="comment">            ['Styles','Format','Font','FontSize'],</span></div><div class="line"><span class="comment">            //文本颜色     背景颜色</span></div><div class="line"><span class="comment">            ['TextColor','BGColor'],</span></div><div class="line"><span class="comment">            //全屏           显示区块</span></div><div class="line"><span class="comment">            ['Maximize', 'ShowBlocks','-']*/</span></div><div class="line">          ]</div><div class="line">      &#125;);</div></pre></td></tr></table></figure></p>
 
       
 
@@ -232,6 +219,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">插件 cookie</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -282,7 +280,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2015/06/11/安装配置Hexo/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/16/工作中的常用插件使用方法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,15 +294,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2015/08/11/浅谈JavaScript的this指向/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          浅谈JavaScript的this指向
-        
-      </div>
-    </a>
   
+    <a href="/2016/08/25/canvas-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Canvas学习笔记-3</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
